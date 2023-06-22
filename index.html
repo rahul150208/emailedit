@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .form-container {
+        width: 400px;
+        padding: 20px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-right: 20px;
+      }
+
+      .form-container label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      .form-container input[type="text"],
+      .form-container select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+      }
+
+      .image-container {
+        flex: 1;
+      }
+
+      .image-container img {
+        max-width: 100%;
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .download-button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .download-button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <form action="/submit" method="post">
+        <label for="clientcode">Client Code:</label>
+        <select id="clientcode" name="clientcode">
+          <option value="P0LEV">P0LEV</option>
+          <option value="ADPF0">ADPF0</option>
+          <option value="H05JU">H05JU</option>
+          <option value="YM9B4">YM9B4</option>
+          <option value="P0R9J">P0R9J</option>
+          <option value="RZBC4">RZBC4</option>
+          <option value="GBFR7">GBFR7</option>
+          <option value="T01Dk">T01Dk</option>
+          <option value="YHRTE">YHRTE</option>
+          <option value="client10">Client 10</option></select
+        ><br /><br />
+
+        <label for="date">Date:</label>
+        <input type="text" id="date" name="date" /><br /><br />
+
+        <label for="mins">mins:</label>
+        <input type="text" id="mins" name="mins" /><br /><br />
+
+        <label for="msg1">Message 1:</label>
+        <input type="text" id="msg1" name="msg1" /><br /><br />
+
+        <label for="msg2">Message 2:</label>
+        <input type="text" id="msg2" name="msg2" /><br /><br />
+
+        <label for="msg3">Message 3:</label>
+        <input type="text" id="msg3" name="msg3" /><br /><br />
+
+        <label for="msg4">Message 4:</label>
+        <input type="text" id="msg4" name="msg4" /><br /><br />
+
+        <label for="msg5">Message 5:</label>
+        <input type="text" id="msg5" name="msg5" /><br /><br />
+
+        <label for="pageno">Page Number:</label>
+        <input type="text" id="pageno" name="pageno" /><br /><br />
+
+        <label for="totalpage">Total Pages:</label>
+        <input type="text" id="totalpage" name="totalpage" /><br /><br />
+
+        <input type="submit" value="Submit" class="submit-button" />
+      </form>
+    </div>
+
+    <div class="image-container">
+      {% if image_path %}
+        <img src="{{ image_path }}" alt="Edited Image">
+        <br><br>
+        <a href="/download?client_code={{ request.form.get('clientcode') }}" class="download-button">Download Image</a>
+      {% endif %}
+    </div>
+  </body>
+</html>
